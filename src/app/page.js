@@ -1,65 +1,114 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+// 1. Organizza le tue foto per tema.
+// Puoi aggiungere quante foto vuoi, basta assegnare la categoria corretta.
+const photos = [
+  { id: 1, src: '/images/foto1.jpg', alt: 'Ritratto 1', category: 'ritratti' },
+  { id: 2, src: '/images/foto2.jpg', alt: 'Street 1', category: 'ritratti' },
+  { id: 3, src: '/images/foto3.jpg', alt: 'Paesaggio 1', category: 'natura' },
+  { id: 4, src: '/images/foto4.jpg', alt: 'Ritratto 2', category: 'strada' },
+  { id: 5, src: '/images/foto5.jpg', alt: 'Street 2', category: 'strada' },
+  { id: 6, src: '/images/foto6.jpg', alt: 'Paesaggio 2', category: 'strada' },
+  { id: 7, src: '/images/foto7.jpg', alt: 'Paesaggio 3', category: 'strada' },
+  { id: 8, src: '/images/foto8.jpg', alt: 'Paesaggio 2', category: 'strada' },
+  { id: 9, src: '/images/conegliano1.jpg', alt: 'Conegliano 1', category: 'strada' },
+  { id: 10, src: '/images/adorisio1.jpg', alt: 'Adorisio', category: 'strada' },
+  { id: 11, src: '/images/bicicletta1.jpg', alt: 'Bicicletta 1', category: 'strada' },
+  { id: 12, src: '/images/chitarra1.jpg', alt: 'Chitarra 1', category: 'dettagli' },
+  { id: 13, src: '/images/gatto1.jpg', alt: 'Gatto 1', category: 'ritratti' },
+  { id: 14, src: '/images/donnarossa.jpg', alt: 'donnarossa', category: 'strada' },
+  { id: 15, src: '/images/ricky1.jpg', alt: 'Ricky 1', category: 'strada' },
+];
+
+// 2. Definiamo le categorie per la navigazione
+const categories = [
+  { id: 'all', label: 'Tutto' },
+  { id: 'ritratti', label: 'Ritratti' },
+  { id: 'strada', label: 'Strada' },
+  { id: 'natura', label: 'Natura' },
+  { id: 'dettagli', label: 'Dettagli' },
+
+];
 
 export default function Home() {
+  const [index, setIndex] = useState(-1);
+  const [filter, setFilter] = useState('all');
+
+  const filteredPhotos = filter === 'all' 
+    ? photos 
+    : photos.filter(p => p.category === filter);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen p-8 md:p-16 lg:p-24 bg-white text-[#333]">
+      {/* Header Minimalista */}
+      <header className="mb-16 text-center">
+        <h1 className="text-3xl font-extralight tracking-[0.3em] uppercase">
+          Zanco Simone
+        </h1>
+        <p className="mt-4 text-gray-400 font-light tracking-[0.2em] text-[10px] uppercase">
+          Visual Storyteller
+        </p>
+      </header>
+
+      {/* Navigazione Filtri */}
+      <nav className="flex flex-wrap justify-center gap-6 md:gap-12 mb-20">
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => setFilter(cat.id)}
+            className={`text-[10px] tracking-[0.25em] uppercase transition-all duration-500 relative pb-2 ${
+              filter === cat.id ? "text-black" : "text-gray-300 hover:text-gray-500"
+            }`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {cat.label}
+            {/* Sottolineatura animata per la categoria attiva */}
+            {filter === cat.id && (
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black animate-in fade-in zoom-in duration-500"></span>
+            )}
+          </button>
+        ))}
+      </nav>
+
+      {/* Griglia Masonry */}
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-10 space-y-10">
+        {filteredPhotos.map((photo, i) => (
+          <div 
+            key={photo.id} 
+            className="break-inside-avoid cursor-zoom-in group relative"
+            onClick={() => setIndex(i)}
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <div className="overflow-hidden bg-gray-50">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={800}
+                height={1200}
+                className="w-full h-auto object-cover transition-all duration-1000 group-hover:scale-[1.02] group-hover:opacity-90"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      <Lightbox
+        index={index}
+        open={index >= 0}
+        close={() => setIndex(-1)}
+        slides={filteredPhotos.map(p => ({ src: p.src }))}
+      />
+
+      {/* Footer */}
+      <footer className="mt-40 mb-10 text-center border-t border-gray-50 pt-20">
+        <p className="text-[9px] tracking-[0.4em] text-gray-300 uppercase">
+          Copyright © 2026 — Basato in Italia
+        </p>
+      </footer>
+    </main>
   );
 }
