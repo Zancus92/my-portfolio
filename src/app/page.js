@@ -20,8 +20,8 @@ const photos = [
 const categories = [
     { id: 'all', label: 'Archivio' },
     { id: 'ritratti', label: 'Persone' },
-    { id: 'strada', label: 'Urban' },
-    { id: 'natura', label: 'Esteri' },
+    { id: 'strada', label: 'Street photography' },
+    { id: 'natura', label: 'Natura' },
     { id: 'dettagli', label: 'Frammenti' },
 ];
 
