@@ -7,12 +7,12 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 const photos = [
-    { id: 1, src: '/images/foto1.webp', alt: 'Ritratto Intimo', category: 'ritratti' },
-    { id: 2, src: '/images/foto2.webp', alt: 'Luci Urbane', category: 'ritratti' },
-    { id: 3, src: '/images/foto3.webp', alt: 'Orizzonte Aperto', category: 'natura' },
-    { id: 4, src: '/images/foto4.webp', alt: 'Attesa', category: 'strada' },
-    { id: 5, src: '/images/foto5.webp', alt: 'Movimento', category: 'strada' },
-    { id: 6, src: '/images/foto6.webp', alt: 'Geometrie', category: 'strada' },
+    { id: 1, src: '/images/foto1.webp', alt: 'Una vecchia storia', category: 'ritratti' },
+    { id: 2, src: '/images/foto2.webp', alt: 'Odore di mare', category: 'ritratti' },
+    { id: 3, src: '/images/foto3.webp', alt: 'Nei monti', category: 'natura' },
+    { id: 4, src: '/images/foto4.webp', alt: 'Stoccolma', category: 'strada' },
+    { id: 5, src: '/images/foto5.webp', alt: 'Old classics', category: 'strada' },
+    { id: 6, src: '/images/foto6.webp', alt: 'Street Art', category: 'strada' },
     { id: 12, src: '/images/chitarra1.webp', alt: 'Vibrazioni', category: 'dettagli' },
     // ... aggiungi le altre qui
 ];
