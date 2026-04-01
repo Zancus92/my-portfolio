@@ -14,6 +14,14 @@ const photos = [
     { id: 5, src: '/images/foto5.webp', alt: 'Old classics', category: 'strada' },
     { id: 6, src: '/images/foto6.webp', alt: 'Street Art', category: 'strada' },
     { id: 12, src: '/images/chitarra1.webp', alt: 'Vibrazioni', category: 'dettagli' },
+    { id: 7, src: '/images/foto7.webp', alt: 'Paesaggio 3', category: 'strada' },
+    { id: 8, src: '/images/foto8.webp', alt: 'Paesaggio 2', category: 'strada' },
+    { id: 9, src: '/images/conegliano1.webp', alt: 'Conegliano 1', category: 'strada' },
+    { id: 10, src: '/images/adorisio1.webp', alt: 'Adorisio', category: 'strada' },
+    { id: 11, src: '/images/bicicletta1.webp', alt: 'Bicicletta 1', category: 'strada' },
+    { id: 13, src: '/images/gatto1.webp', alt: 'Gatto 1', category: 'ritratti' },
+    { id: 14, src: '/images/donnarossa.webp', alt: 'donnarossa', category: 'strada' },
+    { id: 15, src: '/images/ricky1.webp', alt: 'Ricky 1', category: 'strada' },
     // ... aggiungi le altre qui
 ];
 
